@@ -17,6 +17,7 @@ int T = 5;//threshold
 int minStrokeLength = 3;
 int maxStrokeLength = 20;
 float fc = 0.5;//0~1
+float waterIntensity = 0.75;
 
 ////////////////////////////////////add class "Point" and line point!!//////////////////////////////
 
@@ -189,9 +190,9 @@ void paintLayer(Mat& canvas, Mat referenceImage, int r){
 				for(int j=cur->p->y-cur->r;j<cur->p->y+cur->r;j++){
 					if(i>=0 && j>=0 && i<=canvas.cols && j<=canvas.rows){
 						if(pow(i-cur->p->x, 2) + pow(j-cur->p->y, 2)<=pow(cur->r, 2)){
-							canvas.at<Vec3b>(j,i)[0] = cur->colorB;
-							canvas.at<Vec3b>(j,i)[1] = cur->colorG;
-							canvas.at<Vec3b>(j,i)[2] = cur->colorR;
+							canvas.at<Vec3b>(j,i)[0] = canvas.at<Vec3b>(j,i)[0] * waterIntensity + cur->colorB * (1 - waterIntensity);
+							canvas.at<Vec3b>(j,i)[1] = canvas.at<Vec3b>(j,i)[1] * waterIntensity + cur->colorG * (1 - waterIntensity);
+							canvas.at<Vec3b>(j,i)[2] = canvas.at<Vec3b>(j,i)[2] * waterIntensity + cur->colorR * (1 - waterIntensity);
 						}
 					}
 				}
