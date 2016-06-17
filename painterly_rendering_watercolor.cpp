@@ -13,7 +13,7 @@ using namespace cv;
 
 //manual
 int fg = 1;//gridsize
-int T = 5;//threshold
+int T = 1;//threshold
 int minStrokeLength = 3;
 int maxStrokeLength = 20;
 float fc = 0.5;//0~1
@@ -269,7 +269,7 @@ int main(int argc, const char *argv[])
 //	namedWindow("Paint", WINDOW_AUTOSIZE);
 //	imshow("Paint", canvas);
 
-	waitKey(0);
+//	waitKey(0);
 
 	return 0;
 }

@@ -258,7 +258,7 @@ int main(int argc, const char *argv[])
 //	namedWindow("Paint", WINDOW_AUTOSIZE);
 //	imshow("Paint", canvas);
 
-	waitKey(0);
+//	waitKey(0);
 
 	return 0;
 }
