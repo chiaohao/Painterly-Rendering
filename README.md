@@ -10,4 +10,6 @@ g++ \`pkg-config opencv --cflags --libs\` [cpp file name] -o [exec file name] -l
 
 Run
 ---------
-./painterly_rendering [origin picture] [layer count]
+./painterly_rendering_watercolor [origin file name] [output file name] [layer count]
+
+./painterly_rendering_watercolor [origin file name] [output file name] [layer count] [waterIntensity(0~1)]

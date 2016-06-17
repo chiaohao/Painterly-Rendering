@@ -240,7 +240,7 @@ int main(int argc, const char *argv[])
 
 	stringstream ss;
 	int n;
-	ss << argv[2];
+	ss << argv[3];
 	ss >> n;
 	int* brush = new int[n];
 	for(int i=0;i<n;i++)
@@ -249,13 +249,14 @@ int main(int argc, const char *argv[])
 	Mat canvas = paint(sourceImage, brush, n);
 	delete brush;
 
-	imwrite("output.jpg", canvas);
+	imwrite(argv[2], canvas);
 
-	namedWindow("Origin", WINDOW_AUTOSIZE);
-	imshow("Origin", sourceImage);
+//////////show in window/////////////
+//	namedWindow("Origin", WINDOW_AUTOSIZE);
+//	imshow("Origin", sourceImage);
 
-	namedWindow("Paint", WINDOW_AUTOSIZE);
-	imshow("Paint", canvas);
+//	namedWindow("Paint", WINDOW_AUTOSIZE);
+//	imshow("Paint", canvas);
 
 	waitKey(0);
 

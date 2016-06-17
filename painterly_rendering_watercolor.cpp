@@ -17,7 +17,7 @@ int T = 5;//threshold
 int minStrokeLength = 3;
 int maxStrokeLength = 20;
 float fc = 0.5;//0~1
-float waterIntensity = 0.75;
+float waterIntensity;
 
 ////////////////////////////////////add class "Point" and line point!!//////////////////////////////
 
@@ -240,9 +240,19 @@ int main(int argc, const char *argv[])
 	sourceImage = imread(argv[1], CV_LOAD_IMAGE_COLOR);
 
 	stringstream ss;
+
+	float wi;
+	ss << argv[4];
+	ss >> wi;
+	waterIntensity = wi;
+	ss.str("");
+	ss.clear();
+
 	int n;
-	ss << argv[2];
+	ss << argv[3];
 	ss >> n;
+	ss.str("");
+	ss.clear();
 	int* brush = new int[n];
 	for(int i=0;i<n;i++)
 		brush[i] = pow(2, i+1);
@@ -250,13 +260,14 @@ int main(int argc, const char *argv[])
 	Mat canvas = paint(sourceImage, brush, n);
 	delete brush;
 
-	imwrite("output.jpg", canvas);
+	imwrite(argv[2], canvas);
 
-	namedWindow("Origin", WINDOW_AUTOSIZE);
-	imshow("Origin", sourceImage);
+//////////show in window/////////////
+//	namedWindow("Origin", WINDOW_AUTOSIZE);
+//	imshow("Origin", sourceImage);
 
-	namedWindow("Paint", WINDOW_AUTOSIZE);
-	imshow("Paint", canvas);
+//	namedWindow("Paint", WINDOW_AUTOSIZE);
+//	imshow("Paint", canvas);
 
 	waitKey(0);
 
