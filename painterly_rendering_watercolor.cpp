@@ -15,7 +15,7 @@ using namespace cv;
 int fg = 1;//gridsize
 int T = 1;//threshold
 int minStrokeLength = 3;
-int maxStrokeLength = 20;
+int maxStrokeLength = 120;
 float fc = 0.5;//0~1
 float waterIntensity;
 
@@ -219,7 +219,7 @@ void paintLayer(Mat& canvas, Mat referenceImage, int r){
 
 Mat paint(Mat sourceImage, int* R, int n){
 	Mat canvas = sourceImage.clone();
-	canvas.setTo(Scalar(0,0,0));
+	canvas.setTo(Scalar(255,255,255));
 
 	for(int i=n-1;i>=0;i--){
 		Mat referenceImage = canvas.clone();
